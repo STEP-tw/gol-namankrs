@@ -15,6 +15,14 @@ const validateNeighbours = function(neighbours,length,breadth){
   return validNeighbours;
 }
 
+const validateInputs = function(inputs,length,breadth){
+  let isWithinLength = generateIsBetween(-1,length);
+  let isWithinBreadth = generateIsBetween(-1,breadth);
+  let validInputs = inputs.filter(([x,y])=>isWithinBreadth(x) && isWithinLength(y));
+  return validInputs;
+}
+
+
 const getLifeCount = function(board,validNeighbours){
   let lifeCount = 0;
   const isNeighbourValid = function(neighbour){
@@ -28,8 +36,8 @@ const getLifeCount = function(board,validNeighbours){
 const initialiseBoard = function(board,initialStates){
   let grid = board.slice("");
 
-  for(let state of initialStates){
-    grid[state[0]][state[1]] = "*";
+  for(let index=0; index<initialStates.length; index++){ 
+    grid[initialStates[index][0]][initialStates[index][1]] = "*";
   }
   return grid;
 }
@@ -87,6 +95,27 @@ const generateInstances = function(length,breadth,initialStates,generation){
   return resultBoard;
 }
 
+const addBoundary = function(board,length){
+  let upperBoundary = new Array(length).fill('----');
+  upperBoundary.pop(); upperBoundary.push('---');
+  upperBoundary = upperBoundary.join('');
+  upperBoundary = '|'+upperBoundary+'|';
+
+  let lowerBoundary = new Array(length).fill('----');
+  lowerBoundary.pop(); lowerBoundary.push('---');
+  lowerBoundary = lowerBoundary.join(''); 
+  lowerBoundary = '|'+lowerBoundary+'|';
+
+  board.push(lowerBoundary); board.unshift(upperBoundary);
+  return board;
+}
+
+const makeBoard = function(board){
+  let finalBoard = board.map(x=>x.join(" | "));
+  finalBoard = finalBoard.map(x=>'| '+x+' |');
+  finalBoard = addBoundary(finalBoard,board[0].length);
+  return finalBoard ;
+}
 
 module.exports = {generateBoard,validateNeighbours,getLifeCount,
-  initialiseBoard,getNeighbours,destiny,generateInstances}
+  initialiseBoard,getNeighbours,destiny,generateInstances,makeBoard,validateInputs}

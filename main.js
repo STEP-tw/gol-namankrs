@@ -7,5 +7,5 @@ initialStates = initialStates .split(' ').map(x=>x.split(',').map(y=>+y));
 let validInitialStates = validateInputs(initialStates,width,height);
 let generation = +readline.question("Enter the generation : ");
 let resultBoard = (generateInstances(width,height,validInitialStates,generation)); 
-console.log(makeBoard(resultBoard));;
+console.log(makeBoard(resultBoard).join("\n"));
 
