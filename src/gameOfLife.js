@@ -11,6 +11,12 @@ const boundMapper = function(bounds,[x,y]){
   return [a,b];
 }
 
+const reverseBoundMapper = function(bounds,[x,y]){
+  a = x+bounds.topLeft[0];
+  b = y+bounds.topLeft[1];
+  return [a,b];
+}
+
 const initialiseState = function(currentState,bounds){
   let mapper = boundMapper.bind(null,bounds);
   return currentState.map(mapper);
@@ -37,14 +43,16 @@ const deParser = function(board){
     for(let col=0; col<board[0].length; col++){
       if(board[row][col] == "*")
         result.push([row,col]);
-    }
+   }
   }
   return result;
 }
 
 const nextGeneration = function(currGeneration,bounds) {
   let {length,breadth,states} = parser(currGeneration,bounds);
-  let nextState = generateInstances(length,breadth,states,1);
-  return deParser(nextState);
+  let nextBoard = generateInstances(length,breadth,states,1);
+  let nextState = deParser(nextBoard);
+  let mapper = reverseBoundMapper.bind(null,bounds);
+  return nextState.map(mapper);
 }
 module.exports = { nextGeneration };

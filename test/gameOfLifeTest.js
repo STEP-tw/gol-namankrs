@@ -31,3 +31,12 @@ describe('nextGeneration',() => {
     assert.ok(isSameArity(actualNextGen,expectedNextGen));
   });
 });
+describe('nextGeneration',function(){
+  it('should return the positions relative to the bound',function(){
+    let currGeneration = [[1,1],[1,2],[2,1]];
+    let bounds = {topLeft : [1,1],bottomRight:[2,2]};
+    let expectedNextGen = [[1,1],[1,2],[2,1],[2,2]];
+
+    assert.deepEqual(nextGeneration(currGeneration,bounds),expectedNextGen);
+  })
+})
