@@ -24,8 +24,8 @@ const validateStates = function(states,length,breadth){
 }
 
 const parser =  function(currentGeneration,bounds){
- let length = bounds.bottomRight[1]-bounds.topLeft[1];
- let breadth = bounds.bottomRight[0] - bounds.topLeft[0];
+  let length = bounds.bottomRight[1]-bounds.topLeft[1] +1;
+  let breadth = bounds.bottomRight[0] - bounds.topLeft[0] +1;
   let allStates = initialiseState(currentGeneration,bounds);
   let validStates = validateStates(allStates,length,breadth);
   return {length:length,breadth:breadth,states:validStates}
@@ -47,5 +47,4 @@ const nextGeneration = function(currGeneration,bounds) {
   let nextState = generateInstances(length,breadth,states,1);
   return deParser(nextState);
 }
-
 module.exports = { nextGeneration };
