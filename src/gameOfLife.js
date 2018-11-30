@@ -6,15 +6,11 @@ const generateIsBetween = function(lowerLimit,upperLimit){
 }
 
 const boundMapper = function(bounds,[x,y]){
-  a = x-bounds.topLeft[0];
-  b = y-bounds.topLeft[1];
-  return [a,b];
+  return [x-bounds.topLeft[0],y-bounds.topLeft[1]];
 }
 
 const reverseBoundMapper = function(bounds,[x,y]){
-  a = x+bounds.topLeft[0];
-  b = y+bounds.topLeft[1];
-  return [a,b];
+  return [[x+bounds.topLeft[0],y+bounds.topLeft[1]];
 }
 
 const initialiseState = function(currentState,bounds){
