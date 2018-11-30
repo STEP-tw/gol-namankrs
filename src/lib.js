@@ -117,5 +117,17 @@ const makeBoard = function(board){
   return finalBoard ;
 }
 
+const handleStates = function(states,width,height){
+initialStates = states.split(' ').map(x=>x.split(',').map(y=>+y));
+return validateInputs(initialStates,width,height);
+}
+
+const generateInitialBoard = function(length,breadth,initialStates){
+  let board = generateBoard(length,breadth);
+  return initialiseBoard(board,initialStates);
+}
+
 module.exports = {generateBoard,validateNeighbours,getLifeCount,
-  initialiseBoard,getNeighbours,destiny,generateInstances,makeBoard,validateInputs}
+  initialiseBoard,getNeighbours,destiny,generateInstances,
+  makeBoard,validateInputs,handleStates,cycleGenerator,
+  generateInitialBoard}
