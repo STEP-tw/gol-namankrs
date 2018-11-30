@@ -9,12 +9,13 @@ const main = function(){
   let validStates = handleStates(initialStates,width,height);
   let generation = +readline.question("Enter the generation : ");
   let initialBoard = generateInitialBoard(width,height,validStates);
-  for(let instance=0; instance<generation; instance++){
-    let resultBoard = cycleGenerator(width,height,initialBoard);
-    console.log(makeBoard(resultBoard).join("\n"));
-    console.clear();
-    initialBoard = resultBoard;
+  const displayBoard = function(){
+      let resultBoard = cycleGenerator(width,height,initialBoard);
+      console.clear();
+      console.log(makeBoard(resultBoard).join("\n"));
+      initialBoard = resultBoard;
   }
+  setInterval(displayBoard,100);
 }
 
 main();
