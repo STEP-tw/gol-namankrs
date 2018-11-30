@@ -118,7 +118,7 @@ const makeBoard = function(board){
 }
 
 const handleStates = function(states,width,height){
-initialStates = states.split(' ').map(x=>x.split(',').map(y=>+y));
+let initialStates = states.split(' ').map(x=>x.split(',').map(y=>+y));
 return validateInputs(initialStates,width,height);
 }
 

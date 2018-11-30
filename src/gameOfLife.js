@@ -10,7 +10,7 @@ const boundMapper = function(bounds,[x,y]){
 }
 
 const reverseBoundMapper = function(bounds,[x,y]){
-  return [[x+bounds.topLeft[0],y+bounds.topLeft[1]];
+  return [x+bounds.topLeft[0],y+bounds.topLeft[1]];
 }
 
 const initialiseState = function(currentState,bounds){
