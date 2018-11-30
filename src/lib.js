@@ -111,7 +111,7 @@ const addBoundary = function(board,length){
 }
 
 const makeBoard = function(board){
-  let finalBoard = board.map(x=>x.join(" | "));
+  let finalBoard = board.map(x=>x.join("   "));
   finalBoard = finalBoard.map(x=>'| '+x+' |');
   finalBoard = addBoundary(finalBoard,board[0].length);
   return finalBoard ;
