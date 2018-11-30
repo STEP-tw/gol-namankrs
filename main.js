@@ -3,8 +3,6 @@ const {initialiseBoard,cycleGenerator,generateBoard,
   makeBoard,generateInitialBoard,validateInputs,handleStates} = require('./src/lib.js');
 
 const generateInstances = function(length,breadth,initialStates,generation){
-  //let board = generateBoard(length,breadth);
-  //board = initialiseBoard(board,initialStates);
   let board = generateInitialBoard(length,breadth,initialStates);
   let resultBoard = board.map(x=>x.slice());
 
